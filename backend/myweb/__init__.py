@@ -1,4 +1,5 @@
 import os
+import time
 
 from flask import Flask
 
@@ -25,5 +26,10 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    @app.route('/time')
+    def get_time():
+        return {'time': time.time()}
+
 
     return app
