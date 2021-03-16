@@ -1,7 +1,7 @@
 import os
 import time
 
-from flask import Flask
+from flask import Flask, request
 
 
 def create_app(test_config=None):
@@ -23,13 +23,17 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/hello')
+    @app.route('/api/hello')
     def hello():
         return 'Hello, World!'
 
-    @app.route('/time')
+    @app.route('/api/time')
     def get_time():
         return {'time': time.time()}
+
+    @app.route('/api/ip')
+    def get_ip_addr():
+        return {'ip_addr': request.remote_addr}
 
 
     return app

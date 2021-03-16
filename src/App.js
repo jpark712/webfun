@@ -6,8 +6,16 @@ function App() {
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
+    fetch('/api/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
+    });
+  }, []);
+
+  const [ipAddr, setIpAddr] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/ip').then(res => res.json()).then(data => {
+      setIpAddr(data.ip_addr);
     });
   }, []);
 
@@ -18,15 +26,10 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn 
-        </a>
+
         <p> The current time is {currentTime}.</p>
+
+        <p> Your IP Address is {ipAddr}</p>
       </header>
     </div>
   );
