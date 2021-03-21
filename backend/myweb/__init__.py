@@ -23,15 +23,15 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/api/hello')
+    @app.route('/hello')
     def hello():
         return 'Hello, World!'
 
-    @app.route('/api/time')
+    @app.route('/time')
     def get_time():
         return {'time': time.time()}
 
-    @app.route('/api/ip')
+    @app.route('/ip')
     def get_ip_addr():
         return {'ip_addr': request.remote_addr}
 
